@@ -1,5 +1,6 @@
 ﻿using CryptoE.Controllers;
 using CryptoE.Data;
+using CryptoE.Data.API;
 using CryptoE.Data.DTO;
 using CryptoE.Data.Entitys;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,8 @@ namespace BitExchanger.Controllers
                 email = IFC["email"],
                 telegram = IFC["telegram"]
             };
+            GmailSeendler GS = new();
+            GS.Seend(clientApplication.email, clientApplication.from, clientApplication.to, clientApplication.result, clientApplication.amount, clientApplication.Id, clientApplication.wallend, false);
             
 
             return Json(r);

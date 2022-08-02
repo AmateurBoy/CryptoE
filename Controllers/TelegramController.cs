@@ -6,6 +6,10 @@ namespace CryptoE.Controllers
 {
     public class TelegramController : Controller
     {
+        //exchangerseender@gmail.com
+        //qmortdoipszfxfuj
+        //Crypto Exchanger
+
         [HttpGet("/ApiTest123")]
         public void APItest()
         {
