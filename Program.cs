@@ -1,4 +1,5 @@
 
+using CryptoE.Controllers;
 using CryptoE.Data.DTO;
 using CryptoE.Data.Entitys;
 
@@ -24,12 +25,14 @@ app.MapControllerRoute("Default", "{controller=Home}/{action=Redirect}/{id?}");
 
 app.UseEndpoints(endpoints =>
 {
+    
     endpoints.MapDefaultControllerRoute();
     endpoints.MapRazorPages();
 });
 
-
+TelegramController.APItest();
 app.Run();
+
 
     //
 

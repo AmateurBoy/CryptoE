@@ -12,10 +12,14 @@
         "title": "Use number format",
         "titlePayment": "Enter crypto wallet",
         "payout": "Enter the payout adress",
-        "wallet": "Recipient Wallet",
-        "paymentInfo": "Admissible number of characters in field = ?",
+        "wallet": "Recipient wallet",
+        "paymentInfo": "Enter correct wallet",
         "sendInfo" : "Please enter valid values",
-        "invalidWallet": "Invalid wallet",
-        "invalidEmail": "Invalid email"
+        "invalidEmail": "Invalid email",
+        "email" : "Recipient email",
+        "otherContacts" : "Add other contacts",
+        "titleEmail": "Enter email adress",
+        "titleTelegram": "Enter telegram link",
+        "buttonPay": "Im paying"
     }
 }

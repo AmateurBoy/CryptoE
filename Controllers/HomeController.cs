@@ -23,7 +23,6 @@ namespace BitExchanger.Controllers
             int r = random.Next(100000, 999999);
             ClientApplication clientApplication = new ClientApplication
             {
-                
                 Id = r,
                 from = IFC["from"],
                 to = IFC["to"],

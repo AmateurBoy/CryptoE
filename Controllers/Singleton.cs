@@ -38,7 +38,7 @@ namespace CryptoE.Controllers
             {
                 foreach (var item in Coins.CoinsStaibel)
                 {
-                    if (item.name== NameCoin)
+                    if (item.name == NameCoin)
                     {
                         Staibol = true;
                         newCoins= Coins.CoinsStaibel;
