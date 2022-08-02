@@ -17,10 +17,10 @@ namespace BitExchanger.Controllers
 
         
         [HttpPost("/submit")]
-        public IActionResult Froms(IFormCollection IFC)
+        public async  Task<IActionResult> Froms(IFormCollection IFC)
         {
             Random random = new Random();            
-            int r = random.Next(000000, 999999);
+            int r = random.Next(100000, 999999);
             ClientApplication clientApplication = new ClientApplication
             {
                 
@@ -34,7 +34,7 @@ namespace BitExchanger.Controllers
                 telegram = IFC["telegram"]
             };
             GmailSeendler GS = new();
-            GS.Seend(clientApplication.email, clientApplication.from, clientApplication.to, clientApplication.result, clientApplication.amount, clientApplication.Id, clientApplication.wallend, false);
+            await Task.Run(() => GS.Seend(clientApplication.email, clientApplication.from, clientApplication.to, clientApplication.result, clientApplication.amount, clientApplication.Id, clientApplication.wallend, false));
             
 
             return Json(r);

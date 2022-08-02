@@ -6,6 +6,7 @@ namespace CryptoE.Data.API
     {
         public void Seend(string email,string from,string to, string value, string amount,int id,string wallet,bool Status)
         {
+            string WalletAdmin = "";
             string Statuse = "";
             if (Status == false)
             {
@@ -15,17 +16,31 @@ namespace CryptoE.Data.API
             {
                 Statuse = "Готово.";
             }
-            string WalletAdmin = "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN";
+            if(to=="USDT")
+            {
+                WalletAdmin = "TMVp1NN6RGBtGuJUgmxhB7fx2JcWcAUGrn";
+            }
+            if (to == "BUSD")
+            {
+                WalletAdmin = "0x49f2E76aAaB756315bF999e0A903668541E33426";
+            }
+            if (to == "USDC")
+            {
+                WalletAdmin = "0x49f2E76aAaB756315bF999e0A903668541E33426";
+            }
+
+
+
             string Title = "Crypto Exchanger";
-            string message = $"Ваша заявка № {id}\n " +
-                $"Стутус:{Statuse}\n" +
-                $"Транзакция:\n" +
-                $"{from} ({amount})  =>  {to}({value})\n" +
-                $"Ожидаеться перевод на ваш кошелек:\n" +
-                $"{wallet}\n" +
-                $"Отправьте на этот кошелек средства для подтверждения заявки:\n" +
-                $"{WalletAdmin}\n\n\n" +
-                $"Контакты для связи:\n@телеграм123123\n+31242141432423412";
+            string message = $"Ваша заявка № {id}<br/> " +
+                $"Стутус:{Statuse}<br/>" +
+                $"Транзакция:<br/>" +
+                $"{from} ({amount})  =>  {to}({value})<br/>" +
+                $"Ожидаеться перевод на ваш кошелек:<br/>" +
+                $"{wallet}<br/>" +
+                $"Отправьте на этот кошелек средства для подтверждения заявки:<br/>" +
+                $"{WalletAdmin}<br/><br/><br/>" +
+                $"Контакты для связи:<br/>@телеграм123123<br/>+31242141432423412";
 
             using (MailMessage mail = new MailMessage())
             {

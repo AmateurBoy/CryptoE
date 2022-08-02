@@ -16,13 +16,13 @@ namespace CryptoE.Controllers
             CryptoE.Data.API.CoinGecko.Test();
         }
         [HttpGet("/TESTUPDATE")]
-        public void UPDATECOIN(string namecoin, decimal mincoin, decimal maxstring, decimal values)
+        public async Task UPDATECOIN(string namecoin, decimal mincoin, decimal maxstring, decimal values)
         {
             Coin coin = Singleton.FindCoin(namecoin);
             coin.minAmount = Convert.ToDecimal(mincoin);
             coin.maxAmount = Convert.ToDecimal(maxstring);
             coin.value = Convert.ToDecimal(values);
-             Singleton.UpdateStable(coin);
+            await Task.Run(() => Singleton.UpdateStable(coin));
         }
     }
 }
