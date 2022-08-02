@@ -6,7 +6,7 @@ namespace CryptoE.Controllers
     public static class Singleton
     {
         
-        public static CoinsDTO Coins = new();
+        public static CoinsDTO Coins = CoinsDTO.getInstance();
         public static void UpdateStable(List<Coin> Stable)
         {
             Coins.CoinsStaibel = Stable;

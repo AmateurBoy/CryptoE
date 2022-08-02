@@ -1,0 +1,17 @@
+{
+    "text": {
+        "part1":"Meaningless background text to fill the space."
+    },
+    "exchanger": {
+        "maxAmount":"max amount:",
+        "minAmount":"min amount:",
+        "send":"you send:",
+        "get": "you get:",
+        "button":"Exchange",
+        "enter": "Enter amount",
+        "title": "Use number format",
+        "titlePayment": "Enter crypto wallet",
+        "payout": "Enter the payout adress",
+        "wallet": "Recipient Wallet"
+    }
+}

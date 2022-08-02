@@ -51,8 +51,8 @@ namespace BitExchanger.Controllers
                 //res*0.99
                 DC.result = result;
                 DC.amount = amount;
-                DC.maxAmout = Ofcoin.maxAmaut;
-                DC.minAmout = Ofcoin.minAmaut;
+                DC.maxAmout = ToCoin.maxAmaut;
+                DC.minAmout = ToCoin.minAmaut;
                 return Json(DC);
             }
             else
