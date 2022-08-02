@@ -12,6 +12,10 @@
         "title": "Use number format",
         "titlePayment": "Enter crypto wallet",
         "payout": "Enter the payout adress",
-        "wallet": "Recipient Wallet"
+        "wallet": "Recipient Wallet",
+        "paymentInfo": "Admissible number of characters in field = ?",
+        "sendInfo" : "Please enter valid values",
+        "invalidWallet": "Invalid wallet",
+        "invalidEmail": "Invalid email"
     }
 }

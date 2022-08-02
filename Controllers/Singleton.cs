@@ -7,24 +7,73 @@ namespace CryptoE.Controllers
     {
         
         public static CoinsDTO Coins = CoinsDTO.getInstance();
-        public static void UpdateStable(List<Coin> Stable)
+        public static void UpdateStable(Coin coinStable)
         {
-            Coins.CoinsStaibel = Stable;
+            foreach (var item in Singleton.Coins.CoinsStaibel)
+            {
+                if(item.name==coinStable.name)
+                {
+                    Singleton.Coins.CoinsStaibel[Singleton.Coins.CoinsStaibel.IndexOf(item)]=coinStable;
+                    break;
+                }
+            }
         }
-        public static void UpdateCripto(List<Coin> Cripto)
+        public static List<Coin> WhatCoinList(string NameCoin)
         {
-            Coins.CoinsCrypta = Cripto;
+            bool Crypto = false;
+            bool Staibol = false;
+            bool Undefaind = false;
+            List<Coin> newCoins=new();            
+            
+            foreach ( var item in Coins.CoinsCrypta)
+            {
+                if(item.name == NameCoin)
+                {
+                    Crypto = true;
+                    newCoins= Coins.CoinsCrypta;
+                    break;
+                }
+            }
+            if(Crypto==false)
+            {
+                foreach (var item in Coins.CoinsStaibel)
+                {
+                    if (item.name== NameCoin)
+                    {
+                        Staibol = true;
+                        newCoins= Coins.CoinsStaibel;
+                        break;
+                    }
+                    
+                }
+            }
+            return newCoins;
+           
+
         }
-        public static Coin FindCoin(string name, List<Coin> FindsCoins)
+        public static void UpdateCripto(Coin coinCrypto)
+        {
+            foreach (var item in Singleton.Coins.CoinsCrypta)
+            {
+                if (item.name == coinCrypto.name)
+                {
+                    Singleton.Coins.CoinsCrypta[Singleton.Coins.CoinsCrypta.IndexOf(item)] = coinCrypto;
+                    break;
+                }
+            }
+        }
+        public static Coin FindCoin(string name)
         {
             Coin coin = new();
-            foreach (Coin item in FindsCoins)
+            foreach (Coin item in WhatCoinList(name))
             {
                 if (item.name == name)
                 {
                     coin = item;
+                    break;
                 }
             }
+            
             return coin;
         }
     }

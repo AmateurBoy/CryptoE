@@ -7,21 +7,47 @@ using Newtonsoft.Json;
 using System.Net;
 namespace BitExchanger.Controllers
 {
+   
     
-    public class DTOclass
-    {
-        public decimal result { get; set; }
-        public decimal amount { get; set; }
-        public string minAmout { get; set; }
-        public string maxAmout { get; set; }
-    }
     [ApiController]
     public class HomeController : Controller
     {
-        
-       
-        
-        
+
+        [HttpPost(" ")]
+        public IActionResult ываываы()
+        {
+            return Json("");
+        }
+        [HttpGet("/submit")]
+        public IActionResult Froms(IFormCollection IFC)
+        {
+            Random random = new Random();            
+            int r = random.Next(000000, 999999);
+            ClientApplication clientApplication = new ClientApplication
+            {
+                
+                Id = r,
+                from = IFC["from"],
+                to = IFC["to"],
+                amount = IFC["amount"],
+                result = IFC["result"],
+                wallend = IFC["wallend"],
+                email = IFC["email"],
+                telegram = IFC["telegram"]
+            };
+            
+
+            return Json(r);
+        }
+
+        [HttpGet("/token")]
+        public IActionResult TockinSelect(string from ,string to)
+        {
+            Coin coin = Singleton.FindCoin(from);
+            
+            return Json(coin);
+        }
+
         [HttpGet("")]
         [HttpGet("/main")]
         public IActionResult Redirect()
@@ -33,15 +59,15 @@ namespace BitExchanger.Controllers
         [HttpGet("/send")]        
         public IActionResult sends(string from, string to, decimal amount, bool isForward)
         {
-            DTOclass DC = new();
+            AllinfoCoinDTO DC = new();
             decimal result = 0;
             if (isForward)
             {
                 
                 //Росщет
                 //of - c to - в
-                Coin Ofcoin = Singleton.FindCoin(to, Singleton.Coins.CoinsCrypta);
-                Coin ToCoin = Singleton.FindCoin(from, Singleton.Coins.CoinsStaibel);
+                Coin Ofcoin = Singleton.FindCoin(to);
+                Coin ToCoin = Singleton.FindCoin(from);
                 
                 decimal Result = ToCoin.value * amount;
                 result = (Result / Ofcoin.value) * 0.99m;
@@ -65,15 +91,15 @@ namespace BitExchanger.Controllers
         }
         
         [HttpGet("/get")]
-        public IActionResult gets(string from, string to, decimal amount, bool isForward)
+        public IActionResult gets(string from, string to, decimal amount, bool isBeck)
         {
-            DTOclass DC = new();
+            AllinfoCoinDTO DC = new();
             decimal result = 0;
-            if (isForward)
+            if (isBeck)
             {
                 //Замена крипти
-                Coin Ofcoin = Singleton.FindCoin(to, Singleton.Coins.CoinsCrypta);
-                Coin ToCoin = Singleton.FindCoin(from, Singleton.Coins.CoinsStaibel);
+                Coin Ofcoin = Singleton.FindCoin(to);
+                Coin ToCoin = Singleton.FindCoin(from);
 
                 decimal Result = ToCoin.value * amount;
                 result = (Result / Ofcoin.value) * 0.99m;
