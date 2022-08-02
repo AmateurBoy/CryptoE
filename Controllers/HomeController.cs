@@ -5,6 +5,7 @@ using CryptoE.Data.Entitys;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
+
 namespace BitExchanger.Controllers
 {
    
@@ -13,11 +14,7 @@ namespace BitExchanger.Controllers
     public class HomeController : Controller
     {
 
-        [HttpPost(" ")]
-        public IActionResult ываываы()
-        {
-            return Json("");
-        }
+        
         [HttpGet("/submit")]
         public IActionResult Froms(IFormCollection IFC)
         {
@@ -76,9 +73,9 @@ namespace BitExchanger.Controllers
                 //res/(1 ETH = 20)
                 //res*0.99
                 DC.result = result;
-                DC.amount = amount;
-                DC.maxAmout =Convert.ToDecimal(ToCoin.maxAmaut);
-                DC.minAmout = Convert.ToDecimal(ToCoin.minAmaut);
+                DC.amount = Convert.ToDecimal(amount);
+                DC.maxAmount = Convert.ToDecimal(ToCoin.maxAmount);
+                DC.minAmount = Convert.ToDecimal(ToCoin.minAmount);
                 return Json(DC);
             }
             else
@@ -110,8 +107,8 @@ namespace BitExchanger.Controllers
 
                 DC.result = result;
                 DC.amount = amount;
-                DC.maxAmout = Convert.ToDecimal(Ofcoin.maxAmaut);
-                DC.minAmout = Convert.ToDecimal(Ofcoin.minAmaut);
+                DC.maxAmount = Convert.ToDecimal(Ofcoin.maxAmount);
+                DC.minAmount = Convert.ToDecimal(Ofcoin.minAmount);
 
                 return Json(DC);
             }
@@ -120,11 +117,7 @@ namespace BitExchanger.Controllers
                 return Ok();
             }
         }
-        //[HttpGet("/resources/images")]
-        //public IActionResult Images()
-        //{
-        //    return Images();
-        //}
+        
     }
     
 }

@@ -4,7 +4,7 @@
     {
         public decimal result { get; set; }
         public decimal amount { get; set; }
-        public decimal minAmout { get; set; }
-        public decimal maxAmout { get; set; }
+        public decimal minAmount { get; set; }
+        public decimal maxAmount { get; set; }
     }
 }

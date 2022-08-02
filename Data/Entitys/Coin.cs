@@ -7,8 +7,8 @@
         public string label { get; set; }
         public decimal value { get; set; }
         public string img { get; set; }     
-        public decimal minAmaut { get; set; }
-        public decimal maxAmaut { get; set; }
-        public decimal defAmaunt { get; set; }   
+        public decimal minAmount { get; set; }
+        public decimal maxAmount { get; set; }
+        public decimal defAmount { get; set; }   
     }
 }
