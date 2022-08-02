@@ -15,7 +15,7 @@ namespace BitExchanger.Controllers
     {
 
         
-        [HttpGet("/submit")]
+        [HttpPost("/submit")]
         public IActionResult Froms(IFormCollection IFC)
         {
             Random random = new Random();            
