@@ -77,7 +77,7 @@ namespace BitExchanger.Controllers
                 //res*0.99
                 DC.result = result;
                 DC.amount = amount;
-                DC.maxAmout =Convert.ToDecimal( ToCoin.maxAmaut);
+                DC.maxAmout =Convert.ToDecimal(ToCoin.maxAmaut);
                 DC.minAmout = Convert.ToDecimal(ToCoin.minAmaut);
                 return Json(DC);
             }
