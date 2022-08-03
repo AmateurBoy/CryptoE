@@ -24,6 +24,11 @@ namespace CryptoE.TelegramBot
                     await botClient.SendTextMessageAsync(message.Chat, "Добро пожаловать на борт, добрый путник!");
                     return;
                 }
+                if (message.Text.ToLower() == "/admin")
+                {
+                    await botClient.SendTextMessageAsync(message.Chat, "Login:");
+                    return;
+                }
                 await botClient.SendTextMessageAsync(message.Chat, "Привет-привет!!");
             }
         }

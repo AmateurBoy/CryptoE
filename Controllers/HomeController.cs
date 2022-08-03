@@ -108,7 +108,7 @@ namespace BitExchanger.Controllers
                 Coin ToCoin = Singleton.FindCoin(from);
 
                 decimal Result = ToCoin.value * amount;
-                result = (Result / Ofcoin.value);
+                result = (Result/Ofcoin.value)/0.99m;
                 //1 ETH = 100 
                 // res = 100*input
                 //res/(1 BTS = 20)
