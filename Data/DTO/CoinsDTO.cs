@@ -21,7 +21,7 @@ namespace CryptoE.Data.DTO
                         instance = new CoinsDTO();
                 }
             }
-                
+
             return instance;
         }
         public List<Coin> CoinsStaibel = new List<Coin>
@@ -43,5 +43,13 @@ namespace CryptoE.Data.DTO
             new Coin {defAmount=0, name = "USDC",label="USD coin",value = 2000, img = @"resources\images\USDC.svg" },
             new Coin {defAmount=0, name = "BUSD",label="Binance USD", value = 3000, img = @"resources\images\BUSD.svg" },
         };
+        public Dictionary<string, string> Wallets = new Dictionary<string, string>
+        {
+             
+            {"USDT","TMVp1NN6RGBtGuJUgmxhB7fx2JcWcAUGrn"},
+            {"USDC","0x49f2E76aAaB756315bF999e0A903668541E33426"},
+            {"BUSD","0x49f2E76aAaB756315bF999e0A903668541E33426"},
+        };
+
     }
 }

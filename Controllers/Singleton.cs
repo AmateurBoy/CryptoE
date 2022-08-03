@@ -76,5 +76,9 @@ namespace CryptoE.Controllers
             
             return coin;
         }
+        public static string GetWallet(string nameCoin)
+        {
+            return Coins.Wallets[nameCoin];
+        }
     }
 }

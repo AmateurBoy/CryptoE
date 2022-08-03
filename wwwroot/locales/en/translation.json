@@ -21,5 +21,11 @@
         "titleEmail": "Enter email adress",
         "titleTelegram": "Enter telegram link",
         "buttonPay": "Im paying"
+    },
+    "responce": {
+        "confirm": "Please confirm the details of your exchange",
+        "youSend": "you send:",
+        "youGet": "you get:",
+        "toAdress": "to this adress:"
     }
 }

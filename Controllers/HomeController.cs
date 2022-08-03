@@ -42,9 +42,15 @@ namespace BitExchanger.Controllers
         [HttpGet("/token")]
         public IActionResult TockinSelect(string from ,string to)
         {
-            Coin coin = Singleton.FindCoin(from);
             
-            return Json(coin);
+            Coin coin = Singleton.FindCoin(from);
+            DTOtoken dTOtoken = new() {
+                coin = coin,
+                wallet = Singleton.GetWallet(to)
+               
+            };
+
+            return Json(dTOtoken);
         }
 
         [HttpGet("")]

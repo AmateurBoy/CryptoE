@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.e180a2a8.css",
-    "main.js": "/static/js/main.d75d0e3c.js",
+    "main.css": "/static/css/main.6dfa7357.css",
+    "main.js": "/static/js/main.61afafa9.js",
     "static/media/en.svg": "/static/media/en.3cc0d38b3e8d93132c90.svg",
     "static/media/cryptocurrency-73.svg": "/static/media/cryptocurrency-73.aa86e2a78cc40c5054cf.svg",
     "static/media/usdc.svg": "/static/media/usdc.e8285af7b3662963bb50.svg",
     "static/media/tether.svg": "/static/media/tether.5face444201de6e42557.svg",
     "index.html": "/index.html",
+    "static/media/document.svg": "/static/media/document.21002ab35a043267208a.svg",
     "static/media/telegram-plane.svg": "/static/media/telegram-plane.9ba2749778382a3f61c3.svg",
     "static/media/getFetch.cjs": "/static/media/getFetch.c780682470504fffbd04.cjs",
     "static/media/ru.svg": "/static/media/ru.f1c2ba49b3ccc06ba58a.svg",
-    "main.e180a2a8.css.map": "/static/css/main.e180a2a8.css.map",
-    "main.d75d0e3c.js.map": "/static/js/main.d75d0e3c.js.map"
+    "main.6dfa7357.css.map": "/static/css/main.6dfa7357.css.map",
+    "main.61afafa9.js.map": "/static/js/main.61afafa9.js.map"
   },
   "entrypoints": [
-    "static/css/main.e180a2a8.css",
-    "static/js/main.d75d0e3c.js"
+    "static/css/main.6dfa7357.css",
+    "static/js/main.61afafa9.js"
   ]
 }

@@ -12,7 +12,7 @@ namespace CryptoE.Controllers
         //qmortdoipszfxfuj
         //Crypto Exchanger
 
-        [HttpGet("/ApiTest123")]
+        
         public static async void APItest()
         {
             IScheduler scheduler = await StdSchedulerFactory.GetDefaultScheduler();
