@@ -9,6 +9,7 @@
         public string result { get; set; }
         public string wallend { get; set; }
         public string email { get; set; }
+        public string Network { get; set; }
         public string? telegram { get; set; }
     }
 }

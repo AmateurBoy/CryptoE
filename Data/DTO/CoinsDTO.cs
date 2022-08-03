@@ -43,12 +43,24 @@ namespace CryptoE.Data.DTO
             new Coin {defAmount=0, name = "USDC",label="USD coin",value = 2000, img = @"resources\images\USDC.svg" },
             new Coin {defAmount=0, name = "BUSD",label="Binance USD", value = 3000, img = @"resources\images\BUSD.svg" },
         };
-        public Dictionary<string, string> Wallets = new Dictionary<string, string>
+        public Dictionary<string, string> WalletsStaibel = new Dictionary<string, string>
         {
              
             {"USDT","TMVp1NN6RGBtGuJUgmxhB7fx2JcWcAUGrn"},
             {"USDC","0x49f2E76aAaB756315bF999e0A903668541E33426"},
             {"BUSD","0x49f2E76aAaB756315bF999e0A903668541E33426"},
+        };
+        public Dictionary<string, string> WalletsCrypto = new Dictionary<string, string>
+        {
+            {"BTC","bc1qcy6pea3nlg5l29v698utkxqunzva767epr5fgn"},
+            {"ETH","0x49f2E76aAaB756315bF999e0A903668541E33426"},
+            {"XTZ","tz1XFRZtfbLFJH7VVeu6TE8VKw26dop9xaGL"},
+            {"XLM","GCRAJROUWCA22BXS2OTUEKOMGUTHXZV6SN472N2M5M3MQCVKDNSS4LNV"},
+            {"DOGE","DRy1ViPj9WcoZ28EZgyTbk5GVnB9os8dmi"},
+            {"TRX","TMVp1NN6RGBtGuJUgmxhB7fx2JcWcAUGrn"},
+            {"XRP","rPE96LT4LcbM9YTV7U49DnuZyaF2ihPaKR"},
+            {"ADA","addr1qyfg6sck0m4rnc0ct4tp7h0czmecztgnwcpw5ezp00gdw6pmr6km6gn40t8hadlmsnh2zwxh2nf0c9scv9qt8m8mjzmszz94xt"},
+            {"LTC","ltc1qfegptw4fkyf7xrx0wc2l8dwfwf7v4rpdjaxwkr"},
         };
 
     }

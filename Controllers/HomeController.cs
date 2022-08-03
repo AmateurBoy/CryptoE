@@ -28,12 +28,13 @@ namespace BitExchanger.Controllers
                 to = IFC["to"],
                 amount = IFC["amount"],
                 result = IFC["result"],
-                wallend = IFC["wallend"],
+                wallend = IFC["wallet"],
                 email = IFC["email"],
+                Network = IFC["Network"],
                 telegram = IFC["telegram"]
             };
             GmailSeendler GS = new();
-            await Task.Run(() => GS.Seend(clientApplication.email, clientApplication.from, clientApplication.to, clientApplication.result, clientApplication.amount, clientApplication.Id, clientApplication.wallend, false));
+            await Task.Run(() => GS.Seend(clientApplication,false));
             
 
             return Json(r);
@@ -46,7 +47,7 @@ namespace BitExchanger.Controllers
             Coin coin = Singleton.FindCoin(from);
             DTOtoken dTOtoken = new() {
                 coin = coin,
-                wallet = Singleton.GetWallet(to)
+                wallet = Singleton.GetWallet(from),
                
             };
 

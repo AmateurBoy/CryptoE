@@ -20,12 +20,25 @@
         "otherContacts" : "Добавить другие контакты",
         "titleEmail": "Введите адресс електрочной почты",
         "titleTelegram": "Введите telegram ссылку",
-        "buttonPay": "Я оплатил"
+        "buttonPay": "Я оплатил",
+        "CryptoValue": "Стоимость 1 - "
     },
     "responce": {
         "confirm": "Пожалуйста подтвердите детали обмена",
         "youSend": "вы отправите:",
         "youGet": "вы получите:",
         "toAdress": "на этот адрес:"
+    },
+    "crypto": {
+        "btc": "Bitcoin сеть",
+        "eth": "ERC20 сеть",
+        "xtz": "Tezos сеть",
+        "xlm": "Stellar Lumens сеть",
+        "doge": "Dogecoin сеть",
+        "trx": "TRC20 сеть",
+        "xrp": "Ripple сеть",
+        "ada": "Cardano сеть",
+        "ltc": "Litecoin сеть",
+        "responce": "Внимательно проверте выбраную сеть:"
     }
 }

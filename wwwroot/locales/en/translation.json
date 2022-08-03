@@ -20,12 +20,25 @@
         "otherContacts" : "Add other contacts",
         "titleEmail": "Enter email adress",
         "titleTelegram": "Enter telegram link",
-        "buttonPay": "Im paying"
+        "buttonPay": "Im paying",
+        "CryptoValue": "Rate 1 - "
     },
     "responce": {
         "confirm": "Please confirm the details of your exchange",
         "youSend": "you send:",
         "youGet": "you get:",
         "toAdress": "to this adress:"
+    },
+    "crypto": {
+        "btc": "Bitcoin chain",
+        "eth": "ERC20 chain",
+        "xtz": "Tezos chain",
+        "xlm": "Stellar Lumens chain",
+        "doge": "Dogecoin chain",
+        "trx": "TRC20 chain",
+        "xrp": "Ripple chain",
+        "ada": "Cardano chain",
+        "ltc": "Litecoin chain",
+        "responce": "Carefully check the selected network:"
     }
 }

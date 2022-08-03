@@ -1,10 +1,12 @@
-﻿using System.Net;
+﻿using CryptoE.Controllers;
+using CryptoE.Data.Entitys;
+using System.Net;
 using System.Net.Mail;
 namespace CryptoE.Data.API
 {
     public class GmailSeendler
     {
-        public void Seend(string email,string from,string to, string value, string amount,int id,string wallet,bool Status)
+        public void Seend(ClientApplication CA,bool Status)
         {
             string WalletAdmin = "";
             string Statuse = "";
@@ -16,36 +18,25 @@ namespace CryptoE.Data.API
             {
                 Statuse = "Готово.";
             }
-            if(to=="USDT")
-            {
-                WalletAdmin = "TMVp1NN6RGBtGuJUgmxhB7fx2JcWcAUGrn";
-            }
-            if (to == "BUSD")
-            {
-                WalletAdmin = "0x49f2E76aAaB756315bF999e0A903668541E33426";
-            }
-            if (to == "USDC")
-            {
-                WalletAdmin = "0x49f2E76aAaB756315bF999e0A903668541E33426";
-            }
+            WalletAdmin = Singleton.GetWallet(CA.from);
 
 
 
             string Title = "Crypto Exchanger";
-            string message = $"Ваша заявка № {id}<br/> " +
-                $"Стутус:{Statuse}<br/>" +
-                $"Транзакция:<br/>" +
-                $"{from} ({amount})  =>  {to}({value})<br/>" +
-                $"Ожидаеться перевод на ваш кошелек:<br/>" +
-                $"{wallet}<br/>" +
-                $"Отправьте на этот кошелек средства для подтверждения заявки:<br/>" +
+            string message = $"Your application № {CA.Id}<br/> " +
+                $"Status:{Statuse}<br/>" +
+                $"Transaction:{CA.Network} <br/>" +
+                $"{CA.from} ({CA.amount})  =>  {CA.to}({CA.result})<br/>" +
+                $"Transfer to your wallet is expected:<br/>" +
+                $"{CA.wallend}<br/>" +
+                $"Send funds to this wallet to confirm the application:<br/>" +
                 $"{WalletAdmin}<br/><br/><br/>" +
-                $"Контакты для связи:<br/>@телеграм123123<br/>+31242141432423412";
+                $"Contacts for communication:<br/>@telegram<br/>+31242141432423412";
 
             using (MailMessage mail = new MailMessage())
             {
                 mail.From = new MailAddress("exchangerseender@gmail.com");
-                mail.To.Add($"{email}");
+                mail.To.Add($"{CA.email}");
                 mail.Subject = $"{Title}";
                 mail.Body = $"{message}";
                 mail.IsBodyHtml = true;
