@@ -2,6 +2,7 @@
 using CryptoE.Controllers;
 using CryptoE.Data.DTO;
 using CryptoE.Data.Entitys;
+using CryptoE.TelegramBot;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthorization();
@@ -29,7 +30,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapDefaultControllerRoute();
     endpoints.MapRazorPages();
 });
-
+BotController.Main();
 TelegramController.APItest();
 app.Run();
 
