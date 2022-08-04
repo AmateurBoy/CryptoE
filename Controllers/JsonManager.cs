@@ -105,7 +105,8 @@ namespace CryptoE.Controllers
         {
             // чтение данных
             using (FileStream fs = new FileStream("Data/JSON/AdminUsers.json", FileMode.OpenOrCreate))
-            {                
+            {  
+                
                return await JsonSerializer.DeserializeAsync<AdminUser>(fs);               
             }
         }
@@ -119,5 +120,21 @@ namespace CryptoE.Controllers
                 Console.WriteLine("Data update Admin json");
             }
         }
+        public static async void DelAcaunt()
+        {
+            // сохранение данных
+            using (FileStream fs = new FileStream(@"Data/JSON/AdminUsers.json", FileMode.Create))
+            {
+                AdminUser admin = new AdminUser
+                {
+                    Id = 0,
+                    Name = "NotAdmin"
+
+                };
+                await JsonSerializer.SerializeAsync<AdminUser>(fs, admin);
+                Console.WriteLine("Data update Admin json");
+            }
+        }
+
     }
 }

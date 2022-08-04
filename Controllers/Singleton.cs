@@ -25,15 +25,19 @@ namespace CryptoE.Controllers
             bool Undefaind = false;
             List<Coin> newCoins=new();
             
-            foreach ( var item in Coins.CoinsCrypta)
-            {
-                if(item.name == NameCoin)
+            
+                foreach (var item in Coins.CoinsCrypta)
                 {
-                    Crypto = true;
-                    newCoins= Coins.CoinsCrypta;
-                    break;
+                    if (item.name == NameCoin)
+                    {
+                        Crypto = true;
+                        newCoins = Coins.CoinsCrypta;
+                        break;
+                    }
                 }
-            }
+            
+            
+            
             if(Crypto==false)
             {
                 foreach (var item in Coins.CoinsStaibel)
@@ -79,6 +83,24 @@ namespace CryptoE.Controllers
         public static string GetWallet(string nameCoin)
         {
             return Coins.WalletsCrypto[nameCoin];
+        }
+        public static string GetAllCoin()
+        {
+            string res = "";
+            foreach (var item in Coins.CoinsStaibel)
+            {
+                res += $"{item.name} Курс:{item.value} Корректировка курса{item.corecting}\n";
+            }
+            return res;
+        }
+        public static string GetAllWallet()
+        {
+            string res = "";
+            foreach (var item in Coins.WalletsCrypto)
+            {
+                res += $"Валюта {item.Key} \n Кошелек => {item.Value}\n===============================\n";
+            }
+            return res;
         }
     }
 }

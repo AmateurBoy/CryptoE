@@ -1,21 +1,45 @@
 {
   "files": {
-    "main.css": "/static/css/main.40174888.css",
-    "main.js": "/static/js/main.a56fe3c7.js",
+    "main.css": "/static/css/main.d513e001.css",
+    "main.js": "/static/js/main.e21d7c21.js",
+    "static/media/benzinga_desk.svg": "/static/media/benzinga_desk.f83435d826001cd84a95.svg",
+    "static/media/infotwo.png": "/static/media/infotwo.2fc9ecd9740e4f6aa05c.png",
+    "static/media/infoone.png": "/static/media/infoone.e1a8ec0fe52f1fb840fb.png",
+    "static/media/trustpilot-main-page.svg": "/static/media/trustpilot-main-page.094a85d1a0b9387af1b9.svg",
+    "static/media/simplex.svg": "/static/media/simplex.14c49c39ad2e7f1e3a23.svg",
+    "static/media/atomic.svg": "/static/media/atomic.63381957dcf8a30f6e50.svg",
     "static/media/en.svg": "/static/media/en.3cc0d38b3e8d93132c90.svg",
+    "static/media/guarda.svg": "/static/media/guarda.2a52cddc0e8c6abcc35d.svg",
+    "static/media/cake.svg": "/static/media/cake.34a5aa0df3372edd3233.svg",
+    "static/media/ledger.svg": "/static/media/ledger.afc7277a0aab0bcea305.svg",
+    "static/media/98-mobile.svg": "/static/media/98-mobile.e2b26957ade41b765f93.svg",
+    "static/media/binance.svg": "/static/media/binance.e497da9e9cceeff637b3.svg",
+    "static/media/okex.svg": "/static/media/okex.acc9505c408be558b2b2.svg",
+    "static/media/huobi.svg": "/static/media/huobi.980c2437cd4cbec77eb3.svg",
+    "static/media/trezor.svg": "/static/media/trezor.a016067aa4fc346ea9e8.svg",
+    "static/media/edge.svg": "/static/media/edge.d0f5e4f0b9b6b12287cb.svg",
+    "static/media/5min-mobile.svg": "/static/media/5min-mobile.e5f45e496abe25a4cdfd.svg",
     "static/media/cryptocurrency-73.svg": "/static/media/cryptocurrency-73.aa86e2a78cc40c5054cf.svg",
+    "static/media/1.svg": "/static/media/1.a0a8ef09f8ee48b34866.svg",
+    "static/media/2.svg": "/static/media/2.c479fff4538c298604bc.svg",
+    "static/media/3.svg": "/static/media/3.07dbab451091910bf4fc.svg",
     "static/media/usdc.svg": "/static/media/usdc.e8285af7b3662963bb50.svg",
     "static/media/tether.svg": "/static/media/tether.5face444201de6e42557.svg",
+    "static/media/double-check-icon.svg": "/static/media/double-check-icon.2047c028bd7399a6c9e6.svg",
+    "static/media/stars-for-title-mobile.svg": "/static/media/stars-for-title-mobile.a0522f6aa0dc9988a554.svg",
     "index.html": "/index.html",
+    "static/media/1m-mobile.svg": "/static/media/1m-mobile.63fa2159280b2274b26a.svg",
     "static/media/document.svg": "/static/media/document.21002ab35a043267208a.svg",
+    "static/media/arrow-right-icon.svg": "/static/media/arrow-right-icon.324340519725d71ff04e.svg",
     "static/media/telegram-plane.svg": "/static/media/telegram-plane.9ba2749778382a3f61c3.svg",
     "static/media/getFetch.cjs": "/static/media/getFetch.c780682470504fffbd04.cjs",
     "static/media/ru.svg": "/static/media/ru.f1c2ba49b3ccc06ba58a.svg",
-    "main.40174888.css.map": "/static/css/main.40174888.css.map",
-    "main.a56fe3c7.js.map": "/static/js/main.a56fe3c7.js.map"
+    "static/media/check.svg": "/static/media/check.93fa698222a0b551915d.svg",
+    "main.d513e001.css.map": "/static/css/main.d513e001.css.map",
+    "main.e21d7c21.js.map": "/static/js/main.e21d7c21.js.map"
   },
   "entrypoints": [
-    "static/css/main.40174888.css",
-    "static/js/main.a56fe3c7.js"
+    "static/css/main.d513e001.css",
+    "static/js/main.e21d7c21.js"
   ]
 }

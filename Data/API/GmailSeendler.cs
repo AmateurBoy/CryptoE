@@ -1,5 +1,6 @@
 ﻿using CryptoE.Controllers;
 using CryptoE.Data.Entitys;
+using CryptoE.TelegramBot;
 using System.Net;
 using System.Net.Mail;
 namespace CryptoE.Data.API
@@ -23,6 +24,7 @@ namespace CryptoE.Data.API
 
 
             string Title = "Crypto Exchanger";
+
             string message = $"Your application № {CA.Id}<br/> " +
                 $"Status:{Statuse}<br/>" +
                 $"Transaction:{CA.Network} <br/>" +
@@ -33,6 +35,22 @@ namespace CryptoE.Data.API
                 $"{WalletAdmin}<br/><br/><br/>" +
                 $"Contacts for communication:<br/>@telegram<br/>+31242141432423412";
 
+            string messageTelega = $"Новая заявка № {CA.Id}\n " +
+                $"Статус:{Statuse}\n " +
+                $"Транзакция:{CA.Network} \n " +
+                $"{CA.from} ({CA.amount})  =>  {CA.to}({CA.result})\n " +
+                $"На этот отпрвить:\n " +
+                $"{CA.wallend}\n " +
+                $"На этот должны прийти средства:\n " +
+                $"{WalletAdmin}";
+            try
+            {
+                BotController.MessageTelegram(messageTelega);
+            }
+            catch
+            {
+
+            }
             using (MailMessage mail = new MailMessage())
             {
                 mail.From = new MailAddress("exchangerseender@gmail.com");

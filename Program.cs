@@ -30,9 +30,14 @@ app.UseEndpoints(endpoints =>
     endpoints.MapDefaultControllerRoute();
     endpoints.MapRazorPages();
 });
-BotController.Main();
 
+
+
+
+
+BotController.Main();
 TelegramController.APItest();
+
 app.Run();
 
 

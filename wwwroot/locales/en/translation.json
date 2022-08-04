@@ -1,6 +1,7 @@
 {
-    "text": {
-        "part1":"Meaningless background text to fill the space."
+    "title": {
+        "main":"exchanger",
+        "about": "about"
     },
     "exchanger": {
         "maxAmount":"max amount:",
@@ -40,5 +41,28 @@
         "ada": "Cardano chain",
         "ltc": "Litecoin chain",
         "responce": "Carefully check the selected network:"
+    },
+    "landing": {
+        "title1": "Your Best Crypto Exchange",
+        "title2": "Reliable service",
+        "title3": "Fast crypto exchange",
+        "title4": "Non-custodial platform",
+        "text1": "Choose currency",
+        "text2": "Pick one of 9 supported currency from the list",
+        "text3": "Make deposit",
+        "text4": "Confirm details and send your assets to the generated address",
+        "text5": "Get your coins",
+        "text6": "Receive exchanged crypto with the best possible rate",
+        "text7": "It has been great working with the our team. They provide fast swaps with exceptional customer support and nearly zero technical issues. We are proud to have them as a partner in Edge.",
+        "text8": "Integrating our currency exchange has provided tremendous value and convenience for our users!",
+        "text9": "We developed a great partnership with our and their dedication to providing users a smooth, fast, secure, and easy service. Great job, guys!",
+        "text10": "The average time for exchange is about 5 minutes.",
+        "text11": "Triumph Rate 🔥",
+        "text12": "Satisfied Clients",
+        "text13": "Average Exchange Time",
+        "text14": "We retains your privacy and guarantees security. We are a non-custodial exchange service:",
+        "text15": "DEX-exclusive assets crosschain swaps",
+        "text16": "Lower network fees and less on-chain txs",
+        "text17": "Simplified listing for a young start-ups"
     }
 }

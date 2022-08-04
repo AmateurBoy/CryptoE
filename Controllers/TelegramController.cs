@@ -31,7 +31,7 @@ namespace CryptoE.Controllers
             await scheduler.ScheduleJob(job, trigger);        // начинаем выполнение работы
         }
         [HttpGet("/TESTUPDATE")]
-        public static async Task UPDATECOIN(string namecoin, decimal mincoin, decimal maxcoin, decimal values, decimal corect)
+        public static async Task UPDATECOIN(string namecoin, decimal mincoin, decimal maxcoin, decimal corect)
         {
             if(Singleton.WhatCoinList(namecoin)==Singleton.Coins.CoinsStaibel)
             {
@@ -40,7 +40,7 @@ namespace CryptoE.Controllers
                 coin.corecting = corect;
                 coin.minAmount = Convert.ToDecimal(mincoin);
                 coin.maxAmount = Convert.ToDecimal(maxcoin);
-                coin.value = Convert.ToDecimal(values);
+                
                 await Task.Run(() => Singleton.UpdateStable(coin));
 
                 JsonManager.RecCoins(Singleton.Coins.CoinsStaibel);
@@ -51,7 +51,7 @@ namespace CryptoE.Controllers
                 coin.corecting = corect;
                 coin.minAmount = Convert.ToDecimal(mincoin);
                 coin.maxAmount = Convert.ToDecimal(maxcoin);
-                coin.value = Convert.ToDecimal(values);
+                
                 await Task.Run(() => Singleton.UpdateCripto(coin));
                 JsonManager.RecCoins(Singleton.Coins.CoinsCrypta);
             }
@@ -59,10 +59,18 @@ namespace CryptoE.Controllers
         }
         public static async Task<string> UpdateWallet(string nameCOIN, string newWallet)
         {
-            string temp = Singleton.Coins.WalletsCrypto[nameCOIN];
-            Singleton.Coins.WalletsCrypto[nameCOIN]= newWallet;
-            JsonManager.RecWallet(Singleton.Coins.WalletsCrypto);
-            return $"Updata {nameCOIN} \nWallet=>({temp}) |\nNew=>{newWallet}\n Done.";
+            try
+            {
+                string temp = Singleton.Coins.WalletsCrypto[nameCOIN];
+                Singleton.Coins.WalletsCrypto[nameCOIN] = newWallet;
+                JsonManager.RecWallet(Singleton.Coins.WalletsCrypto);
+                return $"Updata {nameCOIN} \nWallet=>({temp}) |\nNew=>{newWallet}\n Done.";
+            }
+            catch
+            {
+                return $"Неудача не найдено: {nameCOIN}";
+            }
+            
         }
         public static async Task<string> UpdateProcent(decimal procent)
         {
@@ -81,6 +89,7 @@ namespace CryptoE.Controllers
             JsonManager.RecAcaunt(AU);
             return"";
         }
+        
         public static async Task<string> CompleteZauvka()
         {
             return "Должен быть код";
