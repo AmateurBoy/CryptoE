@@ -31,25 +31,59 @@ namespace CryptoE.Controllers
             await scheduler.ScheduleJob(job, trigger);        // начинаем выполнение работы
         }
         [HttpGet("/TESTUPDATE")]
-        public async Task UPDATECOIN(string namecoin, decimal mincoin, decimal maxstring, decimal values)
+        public static async Task UPDATECOIN(string namecoin, decimal mincoin, decimal maxcoin, decimal values, decimal corect)
         {
             if(Singleton.WhatCoinList(namecoin)==Singleton.Coins.CoinsStaibel)
             {
+                
                 Coin coin = Singleton.FindCoin(namecoin);
+                coin.corecting = corect;
                 coin.minAmount = Convert.ToDecimal(mincoin);
-                coin.maxAmount = Convert.ToDecimal(maxstring);
+                coin.maxAmount = Convert.ToDecimal(maxcoin);
                 coin.value = Convert.ToDecimal(values);
                 await Task.Run(() => Singleton.UpdateStable(coin));
+
+                JsonManager.RecCoins(Singleton.Coins.CoinsStaibel);
             }
             if (Singleton.WhatCoinList(namecoin) == Singleton.Coins.CoinsCrypta)
             {
                 Coin coin = Singleton.FindCoin(namecoin);
+                coin.corecting = corect;
                 coin.minAmount = Convert.ToDecimal(mincoin);
-                coin.maxAmount = Convert.ToDecimal(maxstring);
+                coin.maxAmount = Convert.ToDecimal(maxcoin);
                 coin.value = Convert.ToDecimal(values);
                 await Task.Run(() => Singleton.UpdateCripto(coin));
+                JsonManager.RecCoins(Singleton.Coins.CoinsCrypta);
             }
 
+        }
+        public static async Task<string> UpdateWallet(string nameCOIN, string newWallet)
+        {
+            string temp = Singleton.Coins.WalletsCrypto[nameCOIN];
+            Singleton.Coins.WalletsCrypto[nameCOIN]= newWallet;
+            JsonManager.RecWallet(Singleton.Coins.WalletsCrypto);
+            return $"Updata {nameCOIN} \nWallet=>({temp}) |\nNew=>{newWallet}\n Done.";
+        }
+        public static async Task<string> UpdateProcent(decimal procent)
+        {
+            decimal temp = Singleton.Coins.Commission;
+            Singleton.Coins.Commission = procent;
+            JsonManager.RecCommission(Singleton.Coins.Commission);
+            return $"Updata Commission {temp}=>{procent}";
+        }
+        public static async Task<string>Autorization(long id, string username)
+        {
+            AdminUser AU = new AdminUser
+            {
+                Id = id,
+                Name = username,
+            };
+            JsonManager.RecAcaunt(AU);
+            return"";
+        }
+        public static async Task<string> CompleteZauvka()
+        {
+            return "Должен быть код";
         }
     }
 }

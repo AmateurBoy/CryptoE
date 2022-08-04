@@ -58,6 +58,7 @@ namespace BitExchanger.Controllers
         [HttpGet("/main")]
         public IActionResult Redirect()
         {
+            
             return Redirect("/index.html");
         }
 
@@ -65,6 +66,7 @@ namespace BitExchanger.Controllers
         [HttpGet("/send")]        
         public IActionResult sends(string from, string to, decimal amount, bool isForward)
         {
+            
             AllinfoCoinDTO DC = new();
             decimal result = 0;
             if (isForward)
@@ -75,8 +77,8 @@ namespace BitExchanger.Controllers
                 Coin Ofcoin = Singleton.FindCoin(to);
                 Coin ToCoin = Singleton.FindCoin(from);
                 
-                decimal Result = ToCoin.value * amount;
-                result = (Result / Ofcoin.value) * 0.99m;
+                decimal Result = (ToCoin.value+ToCoin.corecting) * amount;
+                result = (Result / Ofcoin.value) * Singleton.Coins.Commission;
                 //1 BTS = 100 
                 // res = 100*input
                 //res/(1 ETH = 20)
@@ -106,9 +108,9 @@ namespace BitExchanger.Controllers
                 //Замена крипти
                 Coin Ofcoin = Singleton.FindCoin(to);
                 Coin ToCoin = Singleton.FindCoin(from);
-
-                decimal Result = ToCoin.value * amount;
-                result = (Result/Ofcoin.value)/0.99m;
+                JsonManager.RecCommission(0.99m);
+                decimal Result = (ToCoin.value+ToCoin.corecting) * amount;
+                result = (Result/Ofcoin.value)/Singleton.Coins.Commission;
                 //1 ETH = 100 
                 // res = 100*input
                 //res/(1 BTS = 20)

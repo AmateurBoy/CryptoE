@@ -23,7 +23,7 @@ namespace CryptoE.Controllers
             bool Crypto = false;
             bool Staibol = false;
             bool Undefaind = false;
-            List<Coin> newCoins=new();            
+            List<Coin> newCoins=new();
             
             foreach ( var item in Coins.CoinsCrypta)
             {

@@ -13,6 +13,8 @@ namespace CryptoE.Data.API
         public async Task Execute(IJobExecutionContext context)
         {
             await Test();
+            JsonManager.RecCoins(Singleton.Coins.CoinsCrypta);
+            JsonManager.RecCoins(Singleton.Coins.CoinsStaibel);
         }
         public async Task Test()
         {
@@ -120,16 +122,21 @@ namespace CryptoE.Data.API
                         
                         coin.value = Convert.ToDecimal(valees);
                         Singleton.UpdateStable(coin);
+                        
+
                     }
                     if (Singleton.WhatCoinList(resultcoin) == Singleton.Coins.CoinsCrypta)
                     {
                         Coin coin = Singleton.FindCoin(resultcoin);
                         string valees = Convert.ToString((await simpleClient.GetSimplePrice(new[] { item }, new[] { vsCurrencies }))[$"{item}"]["usd"]);
                         coin.value = Convert.ToDecimal(valees);
-
                         
                         await Task.Run(() => Singleton.UpdateCripto(coin));
+                        
                     }
+                    
+                    
+
 
                 }
                 

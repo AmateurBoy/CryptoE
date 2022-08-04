@@ -31,6 +31,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapRazorPages();
 });
 BotController.Main();
+
 TelegramController.APItest();
 app.Run();
 
