@@ -23,7 +23,7 @@ namespace CryptoE.TelegramBot
         static string temp2 = "";
         static string temp1 = "";
         static string temp0 = "";
-
+        static int exeptcount = 0;
         static string login = "";
         static string pass = "";
         static SerelazBotDTO SBDTO = new();
@@ -56,9 +56,8 @@ namespace CryptoE.TelegramBot
                         "/admin - подключение к управлению.\n" +
                         "/detail - узнать все команды c подробностями.\n" +
                         "/exit - выход с акаунта управления,предоставит возможность авторизироваться кому-то другому(Только админ)\n" +
-                        "/coinsetting - настройка коина [Максимальное значение крипти,Минимальное значение,Корректировка курса](Только админ)\n" +
-                        "/updatawallet - обновить крипто кошелеки [Выбрать крипто валюту и ввести кошелек](Только админ)\n" +
-                        "/allowance - Комисионные могут быть процентной надбавкой(Только админ)\n" + 
+                        "/coinsetting - настройка коина [Максимальное количество крипти,Минимальное колиичество,Корректировка курса(%)](Только админ)\n" +
+                        "/updatawallet - обновить крипто кошелеки [Выбрать крипто валюту кошелька и ввести новый кошелек](Только админ)\n" +                        
                         "/allcoins - вывод названий всех коинов и короткой информации.\n" +
                         "/allwallet - вывод всех кошельков не рекомендовано на телефоне.");
                 }
@@ -69,7 +68,6 @@ namespace CryptoE.TelegramBot
                     await botClient.SendTextMessageAsync(message.Chat, "Login:");
                     return;
                 }
-
                 else if(temp0=="Login:")
                 {
                     temp0 = "";
@@ -106,16 +104,36 @@ namespace CryptoE.TelegramBot
                     }
                     
                 }
+
                 else if(au.Id==message.From.Id&&au.Name==message.From.Username)
                 {
 
-                    #region Updatecoin
+                    try
+                    {
+                        #region Updatecoin
                     if (temp0 == "Activ")
                     {
                         if(message.Text == "Yes")
                         {
-                            TelegramController.UPDATECOIN(SBDTO.NameCoin, SBDTO.Min, SBDTO.Max, SBDTO.Corect);
-                            await botClient.SendTextMessageAsync(message.Chat, $"Сохранено.");
+                           
+                                try
+                                {
+                                    if(Singleton.FindCoin(SBDTO.NameCoin).name == SBDTO.NameCoin)
+                                    {
+                                        TelegramController.UPDATECOIN(SBDTO.NameCoin, SBDTO.Min, SBDTO.Max, SBDTO.Corect);
+                                        await botClient.SendTextMessageAsync(message.Chat, $"Сохранено.");
+                                    }
+                                    else
+                                    {
+                                        await botClient.SendTextMessageAsync(message.Chat, $"Неудалось ввнести обновление(возможно одно из полей введено не коректно)");
+                                    }
+                                    
+                                }
+                                catch
+                                {
+                                    await botClient.SendTextMessageAsync(message.Chat, $"Неудалось ввнести обновление(возможно одно из полей введено не коректно)");
+                                }
+                            
                             temp0 = "";
                         }
                         else
@@ -128,10 +146,20 @@ namespace CryptoE.TelegramBot
                     }
                     else if(temp1 == "UpdateCoin4")
                     {
-                        SBDTO.Corect = Convert.ToDecimal(message.Text);
-                        await botClient.SendTextMessageAsync(message.Chat, $"Сохранить изменения для {SBDTO.NameCoin}?\nМинимальное значение:{SBDTO.Min}\nМаксимальное:{SBDTO.Max}\nКорректировка курса:{SBDTO.Corect}\nВведите: Yes или No");
-                        temp1 = "";
-                        temp0 = "Activ";
+                        try
+                        {
+                            SBDTO.Corect = Convert.ToDecimal(message.Text);
+                            await botClient.SendTextMessageAsync(message.Chat, $"Сохранить изменения для {SBDTO.NameCoin}?\nМинимальное значение:{SBDTO.Min}\nМаксимальное:{SBDTO.Max}\nКорректировка курса:{SBDTO.Corect}\nВведите: Yes или No");
+                            temp1 = "";
+                            temp0 = "Activ";
+                        }
+                        catch
+                        {
+                            await botClient.SendTextMessageAsync(message.Chat, $"Некоректный ввод.");
+                            SBDTO = new();
+                            temp1 = "";
+                            temp0 = "";
+                        }
                         
                     }
                     else if(temp0 == "UpdateCoin3")
@@ -155,10 +183,19 @@ namespace CryptoE.TelegramBot
                     {
                         try
                         {
-                            SBDTO.Min = Convert.ToDecimal(message.Text);
-                            await botClient.SendTextMessageAsync(message.Chat, $"Введите максимальное значение для {SBDTO.NameCoin}:");
-                            temp0 = "UpdateCoin3";
-                            temp1 = "";
+                                if (message.Text[0] != '/')
+                                {
+
+
+                                    SBDTO.Min = Convert.ToDecimal(message.Text);
+                                    await botClient.SendTextMessageAsync(message.Chat, $"Введите максимальное значение для {SBDTO.NameCoin}:");
+                                    temp0 = "UpdateCoin3";
+                                    temp1 = "";
+                                }
+                                else
+                                {
+                                    await botClient.SendTextMessageAsync(message.Chat, $"Введена команда,выход с прошлой команды.");
+                                }
                         }
                         catch
                         {
@@ -170,13 +207,24 @@ namespace CryptoE.TelegramBot
                     }
                     else if(temp0 == "UpdateCoin1")
                     {
+                            
                         SBDTO.NameCoin = message.Text;
-                        await botClient.SendTextMessageAsync(message.Chat, $"Введите минимальное значение для {SBDTO.NameCoin}:");
-                        temp1 = "UpdateCoin2";
-                        temp0 = "";
+                        if(Singleton.FindCoin(SBDTO.NameCoin).name == SBDTO.NameCoin)
+                            {
+                                await botClient.SendTextMessageAsync(message.Chat, $"Введите минимальное значение для {SBDTO.NameCoin}:");
+                                temp1 = "UpdateCoin2";
+                                temp0 = "";
+                            }
+                        else
+                            {
+                                await botClient.SendTextMessageAsync(message.Chat, $"Такой крипты в базе нет {SBDTO.NameCoin}:");
+                                temp1 = "";
+                                temp0 = "";
+                            }
 
+                            
 
-                    }                    
+                        }                    
                     else if (message.Text.ToLower() == "/coinsetting")
                     {
                         await botClient.SendTextMessageAsync(message.Chat, "Вы вошли в настройку коинов.\n" +
@@ -187,11 +235,20 @@ namespace CryptoE.TelegramBot
                         
                     }
                     #endregion
-                    #region walletupdata
+                        #region walletupdata
                     else if (temp0 == "walletupdate1")
                     {
+                            
                         temp3 = message.Text;
-                        await botClient.SendTextMessageAsync(message.Chat, $"{TelegramController.UpdateWallet(temp2,temp3).Result}");
+                            if (temp3[0] != '/') 
+                            {
+                                await botClient.SendTextMessageAsync(message.Chat, $"{TelegramController.UpdateWallet(temp2, temp3).Result}");
+                            }
+                            else
+                            {
+                                await botClient.SendTextMessageAsync(message.Chat, $"обновление не удалось, выход из команды");
+                            }
+                        
                         temp3 = "";
                         temp2 = "";
                         temp0 = "";
@@ -199,58 +256,80 @@ namespace CryptoE.TelegramBot
                     else if(temp0 == "walletupdate0")
                     {
                         temp2 = message.Text;
-                        await botClient.SendTextMessageAsync(message.Chat, $"Введите новий кошелек для {temp2}");
-                        temp0 = "walletupdate1";
-                    }
+                            if(temp2[0] != '/')
+                            {
+                                await botClient.SendTextMessageAsync(message.Chat, $"Введите новий кошелек для {temp2}");
+                                temp0 = "walletupdate1";
+                            }
+                            else
+                            {
+                                await botClient.SendTextMessageAsync(message.Chat, $"Имя не коректное, выход из команды");
+                                temp0 = "";
+                            }
+                            
+                        }
                     else if(message.Text.ToLower() =="/updatawallet")
                     {
-                        await botClient.SendTextMessageAsync(message.Chat, "Настрока кошелька.\nМожно посмотреть все доступные кошельки командой /allwallet\nВвведите имя коина к которому относиться кошелек:Format{btc(неправельно)=BTC(правельно)}");
+                        await botClient.SendTextMessageAsync(message.Chat, "Настрока кошелька.\nМожно посмотреть все доступные кошельки командой /allwallet\nВвведите имя коина к которому относиться кошелек:\n(ПРИМЕР: BTC или ETH или DOGE.....");
                         temp0 = "walletupdate0";
                     }
                     #endregion
-                    #region Allowance
-                    else if (temp0 == "Allowance0")
-                    {
-                        try
-                        {
-                            TelegramController.UpdateProcent(Convert.ToDecimal(message.Text));
-                            temp0 = "";
-                        }
-                        catch
-                        {
-                            await botClient.SendTextMessageAsync(message.Chat, "Некоректный ввод.");
-                            temp0 = "";
-                        }
+                        #region Allowance
+                    //else if (temp0 == "Allowance0")
+                    //{
+                    //    try
+                    //    {
+                    //        TelegramController.UpdateProcent(Convert.ToDecimal(message.Text));
+                    //        temp0 = "";
+                    //    }
+                    //    catch
+                    //    {
+                    //        await botClient.SendTextMessageAsync(message.Chat, "Некоректный ввод.");
+                    //        temp0 = "";
+                    //    }
                         
-                    }
-                    else if(message.Text.ToLower() == "/allowance")
-                    {
-                        await botClient.SendTextMessageAsync(message.Chat, "Ввведите комисионные:\n(Дефолтно стоит 1 = без комисии)\n(Пример: 0,99 = 1%)");
-                        temp0 = "Allowance0";
-                    }
+                    //}
+                    //else if(message.Text.ToLower() == "/allowance")
+                    //{
+                    //    await botClient.SendTextMessageAsync(message.Chat, "Ввведите комисионные:\n(Дефолтно стоит 1 = без комисии)\n(Пример: 0,99 = 1%)");
+                    //    temp0 = "Allowance0";
+                    //}
                     #endregion
-                    #region allcoins
-                    else if(message.Text.ToLower()=="/allcoins")
-                    {
-                        await botClient.SendTextMessageAsync(message.Chat, "Витяжка коинов с базы...");
-                        await botClient.SendTextMessageAsync(message.Chat, Singleton.GetAllCoin());
+                        #region allcoins
+                        else if(message.Text.ToLower()=="/allcoins")
+                        {
+                            await botClient.SendTextMessageAsync(message.Chat, "Витяжка коинов с базы...");
+                            await botClient.SendTextMessageAsync(message.Chat, Singleton.GetAllCoin());
+                        }
+                        #endregion
+                        #region AllWallet
+                        else if (message.Text.ToLower() == "/allwallet")
+                        {
+                            await botClient.SendTextMessageAsync(message.Chat, Singleton.GetAllWallet());
+                        }
+                        #endregion
+                        else if (message.Text.ToLower() == "/exit")
+                        {
+                            JsonManager.DelAcaunt();
+                            await botClient.SendTextMessageAsync(message.Chat, "Вы больше не администратор.Права ограничены, теперь можно назначить нового администратора.");
+                        }
+                        else
+                        {
+                            await botClient.SendTextMessageAsync(message.Chat, "Вы админ,но команды не кто не отменял. /detail");
+                        }
+                        exeptcount = 0;
                     }
-                    #endregion
-                    #region AllWallet
-                    else if (message.Text.ToLower() == "/allwallet")
+                    catch
                     {
-                        await botClient.SendTextMessageAsync(message.Chat, Singleton.GetAllWallet());
+                        if(exeptcount==3)
+                        {
+                            JsonManager.DelAcaunt();
+                            await botClient.SendTextMessageAsync(message.Chat, "Случилась фатальная ошибка принудительный выход с прав управления...( получите права заново. )");
+                        }
+                        exeptcount++;
+                        await botClient.SendTextMessageAsync(message.Chat, "Ошибка програмы... Перезапуск.");
                     }
-                    #endregion
-                    else if (message.Text.ToLower() == "/exit")
-                    {
-                        JsonManager.DelAcaunt();
-                        await botClient.SendTextMessageAsync(message.Chat, "Вы больше не администратор.Права ограничены, теперь можно назначить нового администратора.");
-                    }
-                    else
-                    {
-                        await botClient.SendTextMessageAsync(message.Chat, "Вы админ,но команды не кто не отменял. /detail");
-                    }
+                    
                     
                 }
                 else

@@ -26,6 +26,7 @@ namespace CryptoE.Controllers
             List<Coin> newCoins=new();
             
             
+                
                 foreach (var item in Coins.CoinsCrypta)
                 {
                     if (item.name == NameCoin)
@@ -51,6 +52,7 @@ namespace CryptoE.Controllers
                     
                 }
             }
+            
             return newCoins;
            
 
@@ -89,7 +91,7 @@ namespace CryptoE.Controllers
             string res = "";
             foreach (var item in Coins.CoinsStaibel)
             {
-                res += $"{item.name} Курс:{item.value} Корректировка курса{item.corecting}\n";
+                res += $"{item.name}\nКурс:{item.value}\nКорректировка курса{item.corecting}\nМин.кол{item.minAmount}/Макс.кол.{item.maxAmount}\n===================================";
             }
             return res;
         }
