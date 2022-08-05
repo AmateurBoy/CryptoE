@@ -4,9 +4,9 @@ namespace CryptoE.Data.DTO
 {
     public class DTOtoken
     {
-        public Coin coin { get; set; }
-        
+        public string minAmount { get; set; }
+        public string maxAmount { get; set; }
         public string wallet { get; set; }
-        public decimal value { get; set; }
+        public string value { get; set; }
     }
 }

@@ -14,8 +14,6 @@ namespace BitExchanger.Controllers
     [ApiController]
     public class HomeController : Controller
     {
-
-        
         [HttpPost("/submit")]
         public async  Task<IActionResult> Froms(IFormCollection IFC)
         {
@@ -23,6 +21,7 @@ namespace BitExchanger.Controllers
             int r = random.Next(100000, 999999);
             ClientApplication clientApplication = new ClientApplication
             {
+
                 Id = r,
                 from = IFC["from"],
                 to = IFC["to"],
@@ -32,6 +31,7 @@ namespace BitExchanger.Controllers
                 email = IFC["email"],
                 Network = IFC["Network"],
                 telegram = IFC["telegram"]
+
             };
             GmailSeendler GS = new();
             await Task.Run(() => GS.Seend(clientApplication,false));
@@ -45,10 +45,14 @@ namespace BitExchanger.Controllers
         {
             
             Coin coin = Singleton.FindCoin(from);
-            DTOtoken dTOtoken = new() {
-                coin = coin,
+
+            DTOtoken dTOtoken = new() 
+            {
+
+                maxAmount = Convert.ToString(coin.maxAmount),
+                minAmount = Convert.ToString(coin.minAmount),
                 wallet = Singleton.GetWallet(from),
-               
+                value = Convert.ToString((coin.value * coin.corecting))
             };
 
             return Json(dTOtoken);
@@ -66,19 +70,17 @@ namespace BitExchanger.Controllers
         [HttpGet("/send")]        
         public IActionResult sends(string from, string to, decimal amount, bool isForward)
         {
-            
             AllinfoCoinDTO DC = new();
             decimal result = 0;
             if (isForward)
             {
-                
                 //Росщет
                 //of - c to - в
                 Coin Ofcoin = Singleton.FindCoin(to);
                 Coin ToCoin = Singleton.FindCoin(from);
                 
-                decimal Result = (ToCoin.value+ToCoin.corecting) * amount;
-                result = (Result / Ofcoin.value) * Singleton.Coins.Commission;
+                decimal Result = (ToCoin.value*ToCoin.corecting) * amount;
+                result = (Result / Ofcoin.value);
                 //1 BTS = 100 
                 // res = 100*input
                 //res/(1 ETH = 20)
@@ -108,9 +110,9 @@ namespace BitExchanger.Controllers
                 //Замена крипти
                 Coin Ofcoin = Singleton.FindCoin(to);
                 Coin ToCoin = Singleton.FindCoin(from);
-                JsonManager.RecCommission(0.99m);
-                decimal Result = (ToCoin.value+ToCoin.corecting) * amount;
-                result = (Result/Ofcoin.value)/Singleton.Coins.Commission;
+                
+                decimal Result = (ToCoin.value * ToCoin.corecting) * amount;
+                result = (Result/Ofcoin.value);
                 //1 ETH = 100 
                 // res = 100*input
                 //res/(1 BTS = 20)

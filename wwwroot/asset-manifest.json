@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.d513e001.css",
-    "main.js": "/static/js/main.e21d7c21.js",
+    "main.js": "/static/js/main.63fd222e.js",
     "static/media/benzinga_desk.svg": "/static/media/benzinga_desk.f83435d826001cd84a95.svg",
     "static/media/infotwo.png": "/static/media/infotwo.2fc9ecd9740e4f6aa05c.png",
     "static/media/infoone.png": "/static/media/infoone.e1a8ec0fe52f1fb840fb.png",
@@ -36,10 +36,10 @@
     "static/media/ru.svg": "/static/media/ru.f1c2ba49b3ccc06ba58a.svg",
     "static/media/check.svg": "/static/media/check.93fa698222a0b551915d.svg",
     "main.d513e001.css.map": "/static/css/main.d513e001.css.map",
-    "main.e21d7c21.js.map": "/static/js/main.e21d7c21.js.map"
+    "main.63fd222e.js.map": "/static/js/main.63fd222e.js.map"
   },
   "entrypoints": [
     "static/css/main.d513e001.css",
-    "static/js/main.e21d7c21.js"
+    "static/js/main.63fd222e.js"
   ]
 }
