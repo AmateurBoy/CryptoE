@@ -91,7 +91,7 @@ namespace CryptoE.Controllers
             string res = "";
             foreach (var item in Coins.CoinsStaibel)
             {
-                res += $"{item.name}\nКурс:{item.value}\nКорректировка курса{item.corecting}\nМин.кол{item.minAmount}/Макс.кол.{item.maxAmount}\n===================================";
+                res += $"{item.name}\nКурс:{item.value}\nКорректировка курса:{item.corecting}\nМин.кол:{item.minAmount}/Макс.кол:{item.maxAmount}\n===================================\n";
             }
             return res;
         }
