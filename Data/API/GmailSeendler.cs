@@ -33,7 +33,7 @@ namespace CryptoE.Data.API
                 $"{CA.wallend}<br/>" +
                 $"Send funds to this wallet to confirm the application:<br/>" +
                 $"{WalletAdmin}<br/><br/><br/>" +
-                $"Contacts for communication:<br/>@telegram<br/>+31242141432423412";
+                $"Contacts for communication:<br/> <a href='http://t.me/cryptoexchangr'></a>";
 
             string messageTelega = $"Новая заявка № {CA.Id}\n " +
                 $"Статус:{Statuse}\n " +

@@ -111,7 +111,7 @@ namespace BitExchanger.Controllers
                 Coin Ofcoin = Singleton.FindCoin(to);
                 Coin ToCoin = Singleton.FindCoin(from);
                 
-                decimal Result = (ToCoin.value * ToCoin.corecting) * amount;
+                decimal Result = (ToCoin.value/Ofcoin.corecting) * amount;
                 result = (Result/Ofcoin.value);
                 //1 ETH = 100 
                 // res = 100*input
